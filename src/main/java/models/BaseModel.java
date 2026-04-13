@@ -18,7 +18,6 @@ public class BaseModel {
 
     public void setId(int id) {
         this.id = id;
-        this.updatedAt = new Date();
     }
 
     public Date getCreatedAt() {

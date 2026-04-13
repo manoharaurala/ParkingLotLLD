@@ -4,7 +4,6 @@ import dtos.IssueTicketResponseDTO;
 import models.*;
 import models.enums.*;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class Client {
@@ -38,7 +37,7 @@ public class Client {
         truckSlot1.setId(301);
 
         // --- Setup parking floor ---
-        ParkingFloor floor1 = new ParkingFloor(1, Arrays.asList(carSlot1, carSlot2, bikeSlot1, truckSlot1));
+        ParkingFloor floor1 = new ParkingFloor(1, List.of(carSlot1, carSlot2, bikeSlot1, truckSlot1));
         floor1.setId(1);
 
         // --- Setup supported vehicle types with pricing ---
@@ -50,9 +49,9 @@ public class Client {
         ParkingLot parkingLot = new ParkingLot(
                 "Central Parking",
                 "123 Main Street, City",
-                Arrays.asList(entryGate, exitGate),
+                List.of(entryGate, exitGate),
                 List.of(floor1),
-                Arrays.asList(carType, bikeType, truckType)
+                List.of(carType, bikeType, truckType)
         );
         parkingLot.setId(1);
 

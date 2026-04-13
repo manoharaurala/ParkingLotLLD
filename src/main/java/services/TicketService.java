@@ -48,7 +48,7 @@ public class TicketService {
         slot.setStatus(ParkingSlotStatus.OCCUPIED);
         slot.setVehicle(vehicle);
 
-        String ticketNumber = "TKT-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase();
+        String ticketNumber = "TKT-" + UUID.randomUUID().toString().replace("-", "").substring(0, 8).toUpperCase();
         Ticket ticket = new Ticket(ticketNumber, vehicle, slot, entryGate, new Date());
 
         return new IssueTicketResponseDTO(ticket, ResponseStatus.SUCCESS, "Ticket issued successfully.");
