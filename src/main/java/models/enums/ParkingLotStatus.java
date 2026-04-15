@@ -1,4 +1,8 @@
 package models.enums;
 
-public class ParkingLotStatus {
+public enum ParkingLotStatus {
+    OPEN,
+    CLOSED,
+    UNDER_MAINTENANCE,
+    FILLED
 }
