@@ -1,13 +1,12 @@
 package services;
 
 import models.*;
-import models.enums.SlotAssignmentStrategyType;
 import models.enums.VehicleType;
 import repositories.GateRepository;
 import repositories.TicketRepository;
 import repositories.VehicleRepository;
-import strategies.factory.RandomSlotAssignmentStrategyFactory;
 import strategies.factory.SlotAssignmentStrategyFactory;
+import strategies.factory.SlotAssignmentStrategyFactoryProvider;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -61,11 +60,8 @@ public class TicketService {
 
         //2. Assign Slot
         ParkingLot parkingLot = gate.getParkingLot();
-        SlotAssignmentStrategyFactory factory = null;
-
-        if (parkingLot.getSlotAssignmentStrategyType().equals(SlotAssignmentStrategyType.RANDOM)) {
-            factory = new RandomSlotAssignmentStrategyFactory();
-        }
+        SlotAssignmentStrategyFactory factory = SlotAssignmentStrategyFactoryProvider
+                .getFactory(parkingLot.getSlotAssignmentStrategyType());
 
         ParkingSlot parkingSlot = factory.getSlotAssignmentStrategy()
                 .assignSlot(parkingLot, vehicleType);
