@@ -14,7 +14,7 @@ public class SlotAssignmentStrategyFactoryProvider {
         return switch (strategyType) {
             case RANDOM -> new RandomSlotAssignmentStrategyFactory();
             case NEAREST, FARTHEST ->
-                    throw new IllegalArgumentException("Slot assignment strategy is not implemented: " + strategyType);
+                    throw new IllegalArgumentException("Slot assignment strategy is not yet supported: " + strategyType);
         };
     }
 }
